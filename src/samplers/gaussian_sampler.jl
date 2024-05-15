@@ -16,7 +16,7 @@ Arguments
 Returns
 ≡≡≡≡≡≡≡
 
-    -  Вектор сэмплированных значений типа  `Float64`.
+    -  Список сэмплируемых значений типа Sampels.
 """
 function GaussianSampler(N::Int=1; mu::Float64=0.0, sigma::Float64=1.0)::Sampels
     return mu .+ sigma*randn(N)

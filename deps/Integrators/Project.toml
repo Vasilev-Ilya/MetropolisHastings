@@ -1,0 +1,7 @@
+name = "Integrators"
+uuid = "b4884d15-b6ba-4a45-b1b4-6710915b183e"
+authors = ["vasilev.ilya <stvp1192@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Samplers = "ee8dca40-b55b-47be-b0e5-6f3b59f7f70a"

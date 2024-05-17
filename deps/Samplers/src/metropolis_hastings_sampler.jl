@@ -35,27 +35,24 @@ function SimpleMHS(
     init_state::Float64=1.0, 
     proposal_std::Float64=1.0, 
     bounds::Tuple{Float64, Float64}=(-Inf, Inf)
-)::Matrix_f64
-    sampels = zeros(N, 1)
+)::Sampels
+    sampels = Float64[]
     curr_state = init_state
     accept_prob = rand(N)
     for i=1:N
         new_state = SimpleGS(mu=curr_state, sigma=proposal_std)[1]
-        if new_state > bounds[2]
-            new_state = bounds[2]
-        elseif new_state < bounds[1]
-            new_state = bounds[1]
-        end
+        (new_state > bounds[2] || new_state < bounds[1]) && continue
+
         acceptance_ratio = min(
             1.0, 
             sampled_dist(new_state) / sampled_dist(curr_state),
         )
-        sampels[i] = if accept_prob[i] <= acceptance_ratio
+        curr_state = if accept_prob[i] <= acceptance_ratio
             new_state
         else
             curr_state
         end
-        curr_state = sampels[i]
+        push!(sampels, curr_state)
     end
 
     return sampels

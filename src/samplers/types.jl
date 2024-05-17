@@ -1,1 +1,1 @@
-const Sampels = Vector{Float64}
+const Matrix_f64 = Matrix{Float64}

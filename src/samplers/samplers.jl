@@ -1,9 +1,10 @@
 module Samplers
 using Random
+using LinearAlgebra
 
-export GaussianSampler, MetropolisHastingsSampler
+export SimpleGS, MultivariateGS, SimpleMHS, MultivariateMHS
 
 include("types.jl")
 include("gaussian_sampler.jl")
 include("metropolis_hastings_sampler.jl")
-end # end of 
+end # end of Samplers
